@@ -5,13 +5,7 @@
 #include <vector>
 #include <set>
 #include <cstring>
-#include <string>
-#include <random>
-#include <fstream>
 #include <math.h>
-#include <mutex>
-#include <shared_mutex>
-
 
 
 constexpr size_t MAP_SIZE = 500;

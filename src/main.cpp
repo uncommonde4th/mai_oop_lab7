@@ -9,7 +9,8 @@
 #include <atomic>
 #include <array>
 #include <fstream>
-#include <map>
+#include <mutex>
+#include <shared_mutex>
 
 std::mutex cout_mutex;
 std::mutex battle_mutex;
