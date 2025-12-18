@@ -29,9 +29,10 @@ struct Observer {
     virtual ~Observer() = default;
 };
 
-struct NPC : public std::enable_shared_from_this<NPC> {
+class NPC : public std::enable_shared_from_this<NPC> {
 protected:
     NpcType type;
+    std::string name;
     int x{0};
     int y{0};
     int step_range{0};

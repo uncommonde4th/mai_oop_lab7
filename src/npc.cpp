@@ -2,12 +2,25 @@
 
 #include <algorithm>
 
+static int global_npc_id = 0;
 
-NPC::NPC(NpcType t, int _x, int _y) : type(t), x(_x), y(_y) {}
+inline std::string npc_type_to_string(NpcType type) {
+    switch (type) {
+        case NpcType::OrcType: return "Orc";
+        case NpcType::BearType: return "Bear";
+        case NpcType::SquirrelType: return "Squirrel";
+        default: return "Unknown";
+    }
+}
+
+NPC::NPC(NpcType t, int _x, int _y) : type(t), x(_x), y(_y) {
+    name = npc_type_to_string(type) + "_" + std::to_string(++global_npc_id);
+}
 
 NPC::NPC(NpcType t, std::istream &is) : type(t) {
     is >> x;
     is >> y;
+    name = npc_type_to_string(type) + "_" + std::to_string(++global_npc_id);
 }
 
 void NPC::move(const set_t &others)
@@ -84,6 +97,6 @@ void NPC::save(std::ostream &os) const {
 }
 
 std::ostream &operator<<(std::ostream &os, NPC &npc) {
-    os << "{x:" << npc.x << ", y:" << npc.y << "} ";
+    os << npc.name << "{x:" << npc.x << ", y:" << npc.y << "} ";
     return os;
 }
